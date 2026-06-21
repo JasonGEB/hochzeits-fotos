@@ -15,7 +15,7 @@ const CONFIG = {
 // Ranks (Gamification)
 // ─────────────────────────────────────────────────────────────
 const RANKS = [
-  { threshold: 1,  name: "Hochzeitsgast",          icon: "spark"  },
+  { threshold: 0,  name: "Hochzeitsgast",          icon: "spark"  },
   { threshold: 5,  name: "Foto-Sammler:in",        icon: "bloom"  },
   { threshold: 10, name: "Hochzeits-Fotograf:in",  icon: "camera" },
   { threshold: 20, name: "Tag-Chronist:in",        icon: "book"   },
@@ -52,10 +52,8 @@ let successCount = loadCount();
 let activeUploads = 0;
 const queue = [];
 
-if (successCount > 0) {
-  renderRank(successCount, { animate: false });
-  rankCard.hidden = false;
-}
+renderRank(successCount, { animate: false });
+rankCard.hidden = false;
 
 // ─────────────────────────────────────────────────────────────
 // File selection (click + drag&drop)
