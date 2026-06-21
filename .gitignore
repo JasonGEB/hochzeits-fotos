@@ -1,0 +1,6 @@
+# Apps-Script-Code haengt im Google-Apps-Script-Editor, nicht im Repo.
+# Lokale Kopie nur zum bequemen Editieren, soll NICHT public werden.
+apps-script.gs
+
+# macOS
+.DS_Store
