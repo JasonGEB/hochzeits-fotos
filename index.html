@@ -79,13 +79,25 @@
 
     <ul class="upload-list" id="uploadList" aria-live="polite"></ul>
 
-    <section class="summary" id="summary" hidden>
-      <p class="summary-text">
-        <span id="successCount">0</span> Foto<span class="plural">(s)</span> hochgeladen
-        <span class="heart" aria-hidden="true">♥</span>
-      </p>
+    <section class="rank-card" id="rankCard" hidden aria-live="polite">
+      <div class="rank-emblem" id="rankEmblem" aria-hidden="true"></div>
+      <p class="rank-label">Dein Rang</p>
+      <p class="rank-name" id="rankName">Erster Schnappschuss</p>
+      <div class="rank-progress" id="rankProgress">
+        <div class="rank-progress-track">
+          <div class="rank-progress-bar" id="rankProgressBar"></div>
+        </div>
+        <p class="rank-progress-text" id="rankProgressText"></p>
+      </div>
+      <p class="rank-total"><span id="successCount">0</span> Foto<span id="successPlural">s</span> hochgeladen</p>
       <button type="button" class="link-button" id="resetButton">weitere Fotos hochladen</button>
     </section>
+
+    <div class="levelup-toast" id="levelupToast" hidden aria-live="assertive">
+      <div class="levelup-emblem" id="levelupEmblem" aria-hidden="true"></div>
+      <p class="levelup-eyebrow">Neuer Rang</p>
+      <p class="levelup-name" id="levelupName"></p>
+    </div>
 
     <section class="closing">
       <div class="divider divider-soft" aria-hidden="true">

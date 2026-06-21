@@ -314,23 +314,179 @@ body {
   transition: width 200ms ease;
 }
 
-/* ─── Summary ────────────────────────────────────────── */
-.summary {
-  margin-top: 30px;
+/* ─── Rank card ──────────────────────────────────────── */
+.rank-card {
+  margin-top: 32px;
+  padding: 28px 24px 22px;
   text-align: center;
-  animation: fadeUp 400ms ease both;
+  background: linear-gradient(180deg, #fffaf2 0%, #fdf4e6 100%);
+  border: 1px solid var(--accent-soft);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  animation: fadeUp 500ms ease both;
+  position: relative;
+  overflow: hidden;
 }
 
-.summary-text {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 22px;
-  margin: 0 0 8px;
+.rank-card::before,
+.rank-card::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(40px);
+  opacity: 0.5;
 }
 
-.heart {
+.rank-card::before {
+  background: var(--accent-soft);
+  top: -40px;
+  left: -40px;
+}
+
+.rank-card::after {
+  background: rgba(154, 171, 133, 0.4);
+  bottom: -40px;
+  right: -40px;
+}
+
+.rank-card > * { position: relative; z-index: 1; }
+
+.rank-emblem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  max-width: 72px;
+  max-height: 72px;
+  margin: 0 auto 14px;
+  color: var(--accent-deep);
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--accent-soft);
+  box-shadow: 0 2px 8px rgba(140, 100, 60, 0.08);
+  flex-shrink: 0;
+}
+
+.rank-emblem svg {
+  width: 42px;
+  height: 42px;
+  max-width: 42px;
+  max-height: 42px;
+  flex-shrink: 0;
+}
+
+.rank-emblem.is-pulse {
+  animation: emblemPulse 600ms ease;
+}
+
+.rank-label {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
   color: var(--accent);
-  display: inline-block;
-  animation: pulse 1.6s ease-in-out infinite;
+  margin: 0 0 4px;
+  font-weight: 500;
+}
+
+.rank-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-weight: 500;
+  margin: 0 0 18px;
+  color: var(--text);
+}
+
+.rank-progress {
+  max-width: 320px;
+  margin: 0 auto 16px;
+}
+
+.rank-progress-track {
+  height: 6px;
+  background: rgba(192, 151, 109, 0.18);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.rank-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-deep));
+  border-radius: 3px;
+  transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rank-progress-text {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.rank-total {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 8px 0 6px;
+}
+
+/* ─── Level-up toast ─────────────────────────────────── */
+.levelup-toast {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: var(--surface);
+  border: 1px solid var(--accent-soft);
+  border-radius: var(--radius);
+  padding: 28px 36px;
+  box-shadow: 0 20px 60px rgba(80, 55, 30, 0.25);
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms ease, transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.levelup-toast.is-show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.levelup-emblem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 12px;
+  color: var(--accent-deep);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fff8eb, #f5e6cd);
+  border: 1px solid var(--accent-soft);
+  animation: emblemFloat 1.6s ease-in-out infinite;
+}
+
+.levelup-emblem svg { width: 40px; height: 40px; max-width: 40px; max-height: 40px; flex-shrink: 0; }
+
+.levelup-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 4px;
+  font-weight: 500;
+}
+
+.levelup-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-weight: 500;
+  margin: 0;
+  color: var(--text);
 }
 
 .link-button {
@@ -388,6 +544,17 @@ body {
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.18); }
+}
+
+@keyframes emblemPulse {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.18); }
+  100% { transform: scale(1); }
+}
+
+@keyframes emblemFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
