@@ -2,5 +2,17 @@
 # Lokale Kopie nur zum bequemen Editieren, soll NICHT public werden.
 apps-script.gs
 
+# Lokale Druck-/Hilfs-Seiten (nur fuer den Heimdrucker, nicht fuer GitHub Pages)
+menu-cards.html
+print-cards.html
+ornament-preview.html
+guest-cards.html
+qr/
+
+# Lokale Bild-Assets, die nur die Druckseiten brauchen
+assets/wine-glass.png
+assets/coffee-cup.png
+assets/aperol-spritz.png
+
 # macOS
 .DS_Store

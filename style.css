@@ -47,15 +47,19 @@ body {
 .ornament {
   display: flex;
   justify-content: center;
-  color: var(--sage);
-  opacity: 0.85;
   animation: fadeUp 800ms ease 200ms both;
 }
 
-.ornament svg { width: 160px; height: 60px; }
+.ornament img {
+  width: 200px;
+  height: auto;
+  display: block;
+  opacity: 0.9;
+}
 
-.ornament-top { margin-top: 8px; margin-bottom: -6px; }
-.ornament-bottom { margin-top: 32px; transform: scaleY(-1); }
+.ornament-top { margin-top: 8px; margin-bottom: 4px; }
+.ornament-bottom { margin-top: 32px; }
+.ornament-bottom img { transform: rotate(180deg); }
 
 /* ─── Hero ───────────────────────────────────────────── */
 .hero {
